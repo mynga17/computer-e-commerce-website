@@ -94,8 +94,6 @@ computer-ecommerce-website/
 │   ├── laptop-products.png
 │   ├── product-detail.png
 │   └── contact.png
-│
-├── docs/
-│   └── report.pdf
+|
 │
 └── README.md
