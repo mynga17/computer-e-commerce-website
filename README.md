@@ -77,9 +77,14 @@ A separate contact page is included to provide basic store contact information.
 
 ---
 
-## 🌐 Live Demo
+## 🌐 Website Demo
 
-[View Live Website] (  )
+This project is a static front-end website developed as an academic project.
+
+👉 **[View Website Source](source/home.html)**
+
+To run the website locally, download or clone this repository and open `source/home.html` in a web browser.
+
 
 ## 📂 Project Structure
 
