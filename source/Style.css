@@ -1,0 +1,573 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Muli', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+li {
+    list-style: none;
+}
+
+/*menu*/
+
+.menu {
+    margin: 0px auto;
+    background: #ffc000;
+    height: 50px;
+    padding-top: 20px;
+}
+
+    .menu li {
+        margin: 0px;
+        list-style: none;
+        font-family: 'Ek Mukta';
+        color: black;
+        position: relative;
+    }
+
+    .menu a {
+        transition: all linear 0.15s;
+        background: #ffc000;
+        height: 32px;
+    }
+
+    .menu li:hover > a, .menu .current-item > a {
+        text-decoration: none;
+    }
+
+    .menu .arrow {
+        line-height: 100%;
+    }
+    /*----- css cho phần menu cha -----*/
+    .menu > ul > li {
+        float: left;
+        display: inline-block;
+        position: relative;
+        font-size: 20px;
+    }
+
+        .menu > ul > li > a {
+            padding: 10px 30px;
+            display: inline-block;
+            color: white;
+        }
+
+        .menu > ul > li:hover > a, .menu > ul > .current-item > a {
+            background: orange;
+            color: white;
+        }
+    /*----css cho menu con----*/
+    .menu li:hover .sub-menu {
+        z-index: 1;
+        opacity: 1;
+    }
+
+.sub-menu {
+    width: 336px;
+    padding: 3px 0px;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity linear 0.15s;
+    box-shadow: 0px 2px 3px rgb(0 0 0 / 20%);
+    background: #ffc000;
+}
+
+    .sub-menu li {
+        display: block;
+        font-size: 20px;
+    }
+
+        .sub-menu li a {
+            padding: 10px 30px;
+            display: block;
+        }
+
+            .sub-menu li a:hover, .sub-menu .current-item a {
+                background: yellow;
+                color: black;
+            }
+
+/* header */
+nav {
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    background: #ffc000;
+    height: 100px;
+}
+
+    nav .content-nav {
+        display: flex;
+        line-height: 2.5rem;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 60%;
+    }
+
+        nav .content-nav ul {
+            display: flex;
+        }
+
+        nav .content-nav li {
+            margin: 0px;
+            list-style: none;
+            font-family: 'Ek Mukta';
+        }
+
+        nav .content-nav ul li a {
+            text-decoration: none;
+            color: #43433e;
+            text-transform: uppercase;
+            padding: 0 15px;
+            font-weight: 800;
+        }
+
+            nav .content-nav ul li a:hover {
+                color: white;
+            }
+
+.content-nav form {
+    position: relative;
+}
+
+    .content-nav form input {
+        border: none;
+        background: #fff;
+        padding: 7px;
+        outline: none;
+        border-radius: 12px;
+    }
+
+    .content-nav form button {
+        padding: 5px;
+        border-radius: 12px;
+        position: absolute;
+        right: 0;
+        top: 2px;
+        border: none;
+        outline: none;
+        background: #fff;
+    }
+
+/* modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    margin: 0 auto;
+    width: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .3rem;
+    outline: 0;
+}
+
+.modal-body {
+    padding: 1rem;
+}
+
+.modal-footer {
+    display: flex;
+    border-top: 1px solid #aaaaaa;
+    padding: 1rem;
+    flex-direction: row;
+    justify-content: flex-end;
+    border-top: 1px solid #aaaaaa;
+    padding: 1rem;
+}
+
+    .modal-footer > :not(:first-child) {
+        margin-left: .25rem;
+    }
+
+.btn {
+    cursor: pointer;
+    outline: none;
+    font-weight: 350;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    border-radius: .20rem;
+    transition: all .2s ease-in-out;
+}
+
+.btn-secondary {
+    color: #292b2c;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #0275d8;
+    border-color: #0275d8;
+}
+
+.modal-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #aaaaaa;
+    padding: 1rem;
+}
+
+h5.modal-title {
+    font-size: 3rem;
+}
+
+
+.close {
+    color: #aaaaaa;
+    font-size: 28px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+#cart {
+    font-size: 17px;
+    color: #fff;
+    background: #ff5600;
+    border: 5px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    margin-left: 20rem;
+    padding: 10px;
+    cursor: pointer;
+    height: 70px;
+}
+
+    #cart:hover {
+        border: 5px solid orange;
+    }
+
+/* wrapper */
+.wrapper {
+    padding: 2rem;
+}
+
+.products ul {
+    display: inline-block;
+}
+
+    .products ul .main-product {
+        margin-bottom: 2rem;
+        margin-right: 0rem;
+        margin-left: -30px;
+        display: block;
+        float: left;
+        width: 27%;
+    }
+
+    .products ul .no-margin {
+        margin-right: 5px;
+        margin-left: 2px;
+    }
+
+    .products ul .img-product img {
+        width: 80%;
+    }
+
+    .products ul .img-product :hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+
+.content-product .content-product {
+    padding: .5rem 0;
+    overflow: hidden;
+    color: #222;
+    font-weight: 500;
+    font-size: 16px;
+    max-height: 50px;
+    min-height: 50px;
+    text-align: center;
+    line-height: 19px;
+    margin: 0 0 5px;
+}
+
+.content-product .content-product-deltals {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.main-product .content-product .content-product-deltals .price {
+    color: red;
+    font-weight: 700;
+    margin-right: 5rem;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+.content-product .content-product-deltals .price .money {
+    vertical-align: middle;
+}
+
+.content-product .content-product-deltals .btn-cart {
+    background: #ff8a00;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+}
+
+    .content-product .content-product-deltals .btn-cart:hover {
+        background: #ffdd00;
+    }
+
+/* cart */
+.cart-header {
+    font-weight: bold;
+    font-size: 1.25em;
+    color: #333;
+}
+
+.cart-column {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin-right: 1.5em;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.cart-row {
+    display: flex;
+}
+
+.cart-item {
+    width: 45%;
+}
+
+.cart-price {
+    width: 20%;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.cart-quantity {
+    width: 35%;
+}
+
+.cart-item-title {
+    color: #333;
+    margin-left: .5em;
+    font-size: 1.2em;
+}
+
+.cart-item-image {
+    width: 75px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.btn-danger {
+    color: white;
+    background-color: #EB5757;
+    border: none;
+    border-radius: .3em;
+    font-weight: bold;
+}
+
+    .btn-danger:hover {
+        background-color: #CC4C4C;
+    }
+
+.cart-quantity-input {
+    height: 30px;
+    width: 40px;
+    border-radius: 5px;
+    background-color: #eee;
+    color: #333;
+    text-align: center;
+    font-size: 1.2em;
+    margin-right: 25px;
+}
+
+.cart-row:last-child {
+    border-bottom: 1px solid black;
+}
+
+    .cart-row:last-child .cart-column {
+        border: none;
+    }
+
+.cart-total {
+    text-align: end;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.cart-total-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: black;
+    margin-right: 20px;
+}
+
+.cart-total-price {
+    color: #333;
+    font-size: 1.1em;
+}
+
+h3 {
+    color: black;
+    font-size: 20px;
+}
+
+    h3:hover {
+        color: red;
+        text-decoration: none;
+    }
+
+a {
+    color: black;
+}
+
+    a:hover {
+        color: red;
+    }
+
+i {
+    color: white;
+}
+
+@keyframes move_right {
+    0% {
+        left: 0px;
+    }
+
+    100% {
+        left: 50%;
+    }
+}
+
+
+#btm_banner {
+    top: 180px;
+    position: fixed;
+    width: 400px;
+    opacity: 0.9;
+    left: 75%;
+}
+
+    #btm_banner img {
+        border: 0;
+        cursor: pointer;
+        width: 100%;
+    }
+
+img {
+    vertical-align: middle;
+}
+
+/* thiết lập style cho slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+    margin-top:18px;
+}
+/* ẩn hình ảnh cho phần tử slideshow */
+.mySlides {
+    display: none;
+}
+/* thiết kế nút mũi tên*/
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+/* thiết kế nút mũi tên next nằm phía bên phải */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+    /* hiệu ứng thay đổi background khi hover vào nút mũi tên*/
+    .prev:hover, .next:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+
+/* thiết lập style nút tròn điều khiển*/
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+    .active, .dot:hover {
+        background-color: #717171;
+    }
+/* tạo hiệu ứng chuyển động fade */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+

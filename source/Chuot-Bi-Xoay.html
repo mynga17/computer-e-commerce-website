@@ -1,0 +1,761 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="reponsive.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Muli', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+        }
+
+        li {
+            list-style: none;
+        }
+
+        /*menu*/
+
+        .menu {
+            margin: 0px auto;
+            background: #ffc000;
+            height: 50px;
+            padding-top: 26px;
+        }
+
+            .menu li {
+                margin: 0px;
+                list-style: none;
+                font-family: 'Ek Mukta';
+                color: black;
+                position: relative;
+            }
+
+            .menu a {
+                transition: all linear 0.15s;
+                color: white;
+                text-decoration: none;
+                background: #ffc000;
+                height: 30px;
+                display: block;
+            }
+
+            .menu li:hover > a, .menu .current-item > a {
+                text-decoration: none;
+            }
+
+            .menu .arrow {
+                line-height: 100%;
+            }
+            /*----- css cho phần menu cha -----*/
+            .menu > ul > li {
+                float: left;
+                display: inline-block;
+                position: relative;
+                font-size: 20px;
+            }
+
+                .menu > ul > li > a {
+                    padding: 10px 30px;
+                    display: inline-block;
+                    color: white;
+                }
+
+                .menu > ul > li:hover > a, .menu > ul > .current-item > a {
+                    background: orange;
+                    color: white;
+                }
+            /*----css cho menu con----*/
+            .menu li:hover .sub-menu {
+                z-index: 1;
+                opacity: 1;
+            }
+
+        .sub-menu {
+            width: 225%;
+            padding: 5px 0px;
+            position: absolute;
+            top: 100%;
+            left: 0px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity linear 0.15s;
+            box-shadow: 0px 2px 3px rgba(0,0,0,0.2);
+            background: #ffc000;
+        }
+
+            .sub-menu li {
+                display: block;
+                font-size: 20px;
+            }
+
+                .sub-menu li a {
+                    padding: 10px 30px;
+                    display: block;
+                }
+
+                    .sub-menu li a:hover, .sub-menu .current-item a {
+                        background: yellow;
+                        color: black;
+                    }
+
+        /* header */
+        nav {
+            padding: 15px;
+            width: 100%;
+            display: flex;
+            background: #ffc000;
+            height: 100px;
+        }
+
+            nav .content-nav {
+                display: flex;
+                line-height: 2.5rem;
+                flex-direction: row;
+                justify-content: flex-end;
+                width: 60%;
+            }
+
+                nav .content-nav ul {
+                    display: flex;
+                }
+
+                nav .content-nav li {
+                    margin: 0px;
+                    list-style: none;
+                    font-family: 'Ek Mukta';
+                }
+
+                nav .content-nav ul li a {
+                    text-decoration: none;
+                    color: #43433e;
+                    text-transform: uppercase;
+                    padding: 0 15px;
+                    font-weight: 800;
+                }
+
+                    nav .content-nav ul li a:hover {
+                        color: white;
+                    }
+
+        .content-nav form {
+            position: relative;
+        }
+
+            .content-nav form input {
+                border: none;
+                background: #fff;
+                padding: 7px;
+                outline: none;
+                border-radius: 12px;
+            }
+
+            .content-nav form button {
+                padding: 5px;
+                border-radius: 12px;
+                position: absolute;
+                right: 0;
+                top: 2px;
+                border: none;
+                outline: none;
+                background: #fff;
+            }
+
+        /* modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            margin: 0 auto;
+            width: 50%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, .2);
+            border-radius: .3rem;
+            outline: 0;
+        }
+
+        .modal-body {
+            padding: 1rem;
+        }
+
+        .modal-footer {
+            display: flex;
+            border-top: 1px solid #aaaaaa;
+            padding: 1rem;
+            flex-direction: row;
+            justify-content: flex-end;
+            border-top: 1px solid #aaaaaa;
+            padding: 1rem;
+        }
+
+            .modal-footer > :not(:first-child) {
+                margin-left: .25rem;
+            }
+
+        .btn {
+            cursor: pointer;
+            outline: none;
+            font-weight: 350;
+            line-height: 1.25;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            border: 1px solid transparent;
+            padding: .5rem 1rem;
+            font-size: 1rem;
+            border-radius: .20rem;
+            transition: all .2s ease-in-out;
+        }
+
+        .btn-secondary {
+            color: #292b2c;
+            background-color: #fff;
+            border-color: #ccc;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #0275d8;
+            border-color: #0275d8;
+        }
+
+        .modal-header {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #aaaaaa;
+            padding: 1rem;
+        }
+
+        h5.modal-title {
+            font-size: 3rem;
+        }
+
+
+        .close {
+            color: #aaaaaa;
+            font-size: 28px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        #cart {
+            font-size: 17px;
+            color: #fff;
+            background: #ff5600;
+            border: 5px solid transparent;
+            border-radius: 8px;
+            outline: none;
+            margin-left: 20rem;
+            padding: 10px;
+            cursor: pointer;
+            height: 70px;
+        }
+
+            #cart:hover {
+                border: 5px solid orange;
+            }
+
+        /* wrapper */
+        .wrapper {
+            padding: 2rem;
+        }
+
+        .products ul {
+            display: inline-block;
+        }
+
+            .products ul .main-product {
+                margin-bottom: 2rem;
+                margin-right: 1rem;
+                display: block;
+                float: left;
+                width: 24%;
+            }
+
+            .products ul .no-margin {
+                margin-right: 5px;
+                margin-left: 2px;
+            }
+
+            .products ul .img-product img {
+                width: 80%;
+            }
+
+            .products ul .img-product :hover {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+
+
+        .content-product .content-product {
+            padding-left: 8px;
+            color: #222;
+            font-weight: bold;
+            font-size: 25px;
+            max-height: 50px;
+            min-height: 50px;
+            text-align: left;
+            line-height: 19px;
+            padding-top: 17px;
+        }
+        }
+
+
+        .content-product .content-product-deltals {
+            display: flex;
+            justify-content: left;
+            padding-top: 1rem;
+        }
+
+        .main-product .content-product .content-product-deltals .price {
+            color: red;
+            font-weight: 700;
+            margin-right: 5rem;
+            vertical-align: middle;
+            font-size: 20px;
+        }
+
+        .content-product .content-product-deltals .price .money {
+            vertical-align: middle;
+        }
+
+        .content-product .content-product-deltals .btn-cart {
+            background: #ff8a00;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+            .content-product .content-product-deltals .btn-cart:hover {
+                background: #ffdd00;
+            }
+
+        /* cart */
+        .cart-header {
+            font-weight: bold;
+            font-size: 1.25em;
+            color: #333;
+        }
+
+        .cart-column {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid black;
+            margin-right: 1.5em;
+            padding-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .cart-row {
+            display: flex;
+        }
+
+        .cart-item {
+            width: 45%;
+        }
+
+        .cart-price {
+            width: 20%;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .cart-quantity {
+            width: 35%;
+        }
+
+        .cart-item-title {
+            color: #333;
+            margin-left: .5em;
+            font-size: 1.2em;
+        }
+
+        .cart-item-image {
+            width: 75px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .btn-danger {
+            color: white;
+            background-color: #EB5757;
+            border: none;
+            border-radius: .3em;
+            font-weight: bold;
+        }
+
+            .btn-danger:hover {
+                background-color: #CC4C4C;
+            }
+
+        .cart-quantity-input {
+            height: 30px;
+            width: 40px;
+            border-radius: 5px;
+            background-color: #eee;
+            color: #333;
+            text-align: center;
+            font-size: 1.2em;
+            margin-right: 25px;
+        }
+
+        .cart-row:last-child {
+            border-bottom: 1px solid black;
+        }
+
+            .cart-row:last-child .cart-column {
+                border: none;
+            }
+
+        .cart-total {
+            text-align: end;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+
+        .cart-total-title {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: black;
+            margin-right: 20px;
+        }
+
+        .cart-total-price {
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        h3 {
+            color: black;
+            font-size: 20px;
+        }
+
+            h3:hover {
+                color: red;
+                text-decoration: none;
+            }
+
+        a {
+            color: black;
+        }
+
+            a:hover {
+                color: red;
+            }
+
+        i {
+            color: #28a08d;
+            margin-left: 18%;
+            font-size: 21px;
+        }
+
+        @keyframes move_right {
+            0% {
+                left: 0px;
+            }
+
+            100% {
+                left: 50%;
+            }
+        }
+
+
+        #btm_banner {
+            top: 180px;
+            position: fixed;
+            width: 400px;
+            opacity: 0.9;
+            left: 75%;
+        }
+
+            #btm_banner img {
+                border: 0;
+                cursor: pointer;
+                width: 100%;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="img-nav">
+                <img src="Logo.png" height="100px" width="150px" style="padding-left:25px;padding-bottom:20px;">
+            </div>
+            <div class="content-nav">
+                <div class="menu">
+                    <ul>
+                        <li><a href="home.html">Trang Chủ</a></li>
+                        <li>
+                            <a href="#">Sản Phẩm</a>
+                            <ul class="sub-menu">
+                                <li><a href="Page-Dell.html">Dell</a>
+                                <li>
+                                <li><a href="Page-Asus.html">Asus</a>
+                                <li>
+                                <li><a href="Page-Hp.html">Hp</a></li>
+                                <li><a href="Page-Chuot.html">Chuột</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="lienhe.html"><span class="glyphicon glyphicon-phone-alt"></span>&nbspLiên hệ</a></li>
+                    </ul>
+                </div>
+                <form>
+                    <input style="font-size: 18px; width: 300px; margin-right: -150px; margin-top: 20px;" type="text" name="search" placeholder="Tìm kiếm sản phẩm ..." />
+                    <button style="margin-right: -150px; font-size: 18px; margin-top: 20px;" type="submit"><i style="color:black" class="fa fa-search" aria-hidden="true"></i></button>
+                </form>
+            </div>
+
+            <button id="cart">
+                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                Giỏ Hàng
+            </button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" style="color:red"><b>Giỏ hàng</b></h5>
+                        <span class="close">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="cart-row">
+                            <span class="cart-item cart-header cart-column">Sản Phẩm</span>
+                            <span class="cart-price cart-header cart-column">Giá</span>
+                            <span class="cart-quantity cart-header cart-column">Số Lượng</span>
+                        </div>
+                        <div class="cart-items">
+
+                        </div>
+                        <div class="cart-total">
+                            <strong class="cart-total-title">Tổng Cộng:</strong>
+                            <span class="cart-total-price">0đ</span>
+                            <div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary close-footer">Đóng</button>
+                                <button type="button" class="btn btn-primary order">Thanh Toán</button>
+                            </div>
+                        </div>
+                    </div>
+        </nav>
+    </header>
+
+    <section class="wrapper">
+
+        <table style="width:100%; text-align:center">
+            <tr>
+                <td width="40%">
+                    <div class="products">
+                        <div class="main-product">
+                            <div class="img-product"><img width="400px" height="500px" class="img-prd" src="Chuot-bi.jpg"></div>
+                            <div class="content-product">
+                                <h1 class="content-product">Chuột bi xoay Logitech Ergo TrackBall M575</h1>
+                                <div class="content-product-deltals" style="margin-left:20px;margin-bottom:80px">
+                                    <div class="price"><span class="money">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 999.000đ</span></div>
+                                    <button type="button" class="btn btn-cart" style="font-size:30px">Mua ngay</button> &nbsp &nbsp &nbsp
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td style="width:35%">
+                    <p style="background-color:#ffe179;font-size:19px;width:600px;height:270px;text-align:justify;padding:15px;border-radius:10px;margin-bottom:30px">
+                        <strong><i>THIẾT KẾ NHỎ GỌN HIỆN ĐẠI</i></strong><br />
+                        Chuột bi xoay không dây Logitech Ergo Trackball M575 (Đen) sở hữu hình dáng nhỏ gọn và là sự lựa chọn lý tưởng dành cho những không gian chật hẹp, 
+                        không có nhiều diện tích như bàn làm việc,.. Thiết bị mang đến khả năng kết nối vượt trội với tín hiệu mạnh mẽ và ổn định từ khoảng cách lên đến 10m 
+                        thông qua Bluetooth, 2.4 GHz Wireless.  Kết nối đến Windows hoặc macOS trở nên đơn giản và bạn sẽ không bao giờ phải lo về vấn đề rớt mạng hay kết nối chậm trễ.
+                    </p>
+                    <img src="chuot-bi-logitech.jpg" width="600">
+                    <br><br>
+                        <p style="background-color: #fff1aa; font-size: 18px; width: 600px; height: 210px; text-align: justify; padding: 15px; border-radius: 10px; margin-top: 5px">
+                            <strong><i>THIẾT KẾ CÔNG THÁI HỌC THOẢI MÁI</i></strong> <br>
+                            Chuột bi xoay không dây Logitech Ergo Trackball M575 (Đen) được thiết kế nhằm giảm thiểu việc di chuyển, đồng thời mang đến sự thoải mái tối đa cho người dùng. 
+                            Bạn sẽ không cần cử động cánh tay qua lại để có thể di chuyển con trỏ mà thay vào đó, nút điều khiển bằng ngón cái mượt mà sẽ giúp bạn thao tác nhanh chóng 
+                            và chính xác, giảm áp lực ở phần tay.
+                        </p>
+                </td>
+                <td width="25%">
+                    <h2 style="color:orange;">Hệ thống cửa hàng FUTURE</h2><br>
+                    <b style="color:red">CN1: Quận 5, TP. Hồ Chí Minh</b>
+                    <br>182 Trần Bình Trọng Phường 3 Quận 5
+                    <br>Hotline: 0948.666.000
+                    <br>Thời gian làm việc: 08h00 - 22h00<br>
+                    <b style="color:red">CN2: Thủ Dầu Một - Bình Dương</b>
+                    <br>Số 449 Đại lộ Bình Dương, P. Phú Cường, TP.TDM
+                    <br>Hotline: 0834.290.290
+                    <br>Thời gian làm việc: 08h00 - 22h00<br>
+                    <b style="color:red">CN3: Dĩ An - Bình Dương</b>
+                    <br>Số 249 Nguyễn An Ninh, P. Dĩ An, TP. Dĩ An
+                    <br>Hotline: 0917.84.74.74
+                    <br>Thời gian làm việc: 08h00 - 22h00<br>
+                    <b style="color:red">CN4: Dĩ An - Bình Dương</b>
+                    <br>229 Lý Thường Kiệt, KP.Thắng Lợi 2, P.Dĩ An, TP.Dĩ An
+                    <br>Hotline: 0947.711.881
+                    <br>Thời gian làm việc: 08h00 - 22h00<br>
+                    <b style="color:red">
+                        CN5: Đồng Khởi – Biên Hòa - Đồng Nai
+                        <br>Số 93 Đồng Khởi, P. Tam Hiệp, Tp. Biên Hòa
+                    </b>
+                    <br>Hotline: 0933.033.966
+                    <br>Thời gian làm việc: 08h00 - 22h00<br>
+                    <b style="color:red">CN3: Dĩ An - Bình Dương</b>
+                    <br>Số 249 Nguyễn An Ninh, P. Dĩ An, TP. Dĩ An
+                    <br>Hotline: 0917.84.74.74
+                    <br>Thời gian làm việc: 08h00 - 22h00<br>
+                    <b style="color:red">CN2: Thủ Dầu Một - Bình Dương</b>
+                    <br>Số 449 Đại lộ Bình Dương, P. Phú Cường, TP.TDM
+                    <br>Hotline: 0834.290.290
+                    <br>Thời gian làm việc: 08h00 - 22h00<br>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <script>
+        // Modal
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("cart");
+        var close = document.getElementsByClassName("close")[0];
+        var close_footer = document.getElementsByClassName("close-footer")[0];
+        var order = document.getElementsByClassName("order")[0];
+        btn.onclick = function () {
+          modal.style.display = "block";
+        }
+        close.onclick = function () {
+          modal.style.display = "none";
+        }
+        close_footer.onclick = function () {
+          modal.style.display = "none";
+        }
+        order.onclick = function () {
+          alert("Đã thanh toán đơn hàng thành công")
+        }
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+
+        // xóa cart
+        var remove_cart = document.getElementsByClassName("btn-danger");
+        for (var i = 0; i < remove_cart.length; i++) {
+          var button = remove_cart[i]
+          button.addEventListener("click", function () {
+            var button_remove = event.target
+            button_remove.parentElement.parentElement.remove()
+          })
+        }
+
+        // thay đổi số lượng sản phẩm
+        var quantity_input = document.getElementsByClassName("cart-quantity-input");
+        for (var i = 0; i < quantity_input.length; i++) {
+          var input = quantity_input[i];
+          input.addEventListener("change", function (event) {
+            var input = event.target
+            if (isNaN(input.value) || input.value <= 0) {
+              input.value = 1;
+            }
+            updatecart()
+          })
+        }
+
+        // Thêm vào giỏ
+        var add_cart = document.getElementsByClassName("btn-cart");
+        for (var i = 0; i < add_cart.length; i++) {
+          var add = add_cart[i];
+          add.addEventListener("click", function (event) {
+
+            var button = event.target;
+            var product = button.parentElement.parentElement;
+            var img = product.parentElement.getElementsByClassName("img-prd")[0].src
+            var title = product.getElementsByClassName("content-product")[0].innerText
+            var price = product.getElementsByClassName("price")[0].innerText
+            addItemToCart(title, price, img)
+            // Khi thêm sản phẩm vào giỏ hàng thì sẽ hiển thị modal
+            modal.style.display = "block";
+
+            updatecart()
+          })
+        }
+
+        function addItemToCart(title, price, img) {
+          var cartRow = document.createElement('div')
+          cartRow.classList.add('cart-row')
+          var cartItems = document.getElementsByClassName('cart-items')[0]
+          var cart_title = cartItems.getElementsByClassName('cart-item-title')
+          for (var i = 0; i < cart_title.length; i++) {
+            if (cart_title[i].innerText == title) {
+              alert('Đã Có Trong Giỏ Hàng')
+              return
+            }
+          }
+
+          var cartRowContents = `<div class="cart-item cart-column"><img class="cart-item-image" src="${img}" width="100" height="100"><span class="cart-item-title">${title}</span></div><span class="cart-price cart-column">${price}</span><div class="cart-quantity cart-column"><input class="cart-quantity-input" type="number" value="1"><button class="btn btn-danger" type="button">Xóa</button></div>`
+          cartRow.innerHTML = cartRowContents
+          cartItems.append(cartRow)
+          cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', function () {
+            var button_remove = event.target
+            button_remove.parentElement.parentElement.remove()
+            updatecart()
+          })
+          cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', function (event) {
+            var input = event.target
+            if (isNaN(input.value) || input.value <= 0) {
+              input.value = 1;
+            }
+            updatecart()
+          })
+        }
+
+        // update cart
+        function updatecart() {
+          var cart_item = document.getElementsByClassName("cart-items")[0];
+          var cart_rows = cart_item.getElementsByClassName("cart-row");
+          var total = 0;
+          for (var i = 0; i < cart_rows.length; i++) {
+            var cart_row = cart_rows[i]
+            var price_item = cart_row.getElementsByClassName("cart-price ")[0]
+            var quantity_item = cart_row.getElementsByClassName("cart-quantity-input")[0]
+            var price = parseFloat(price_item.innerText)
+            var quantity = quantity_item.value
+            total = total + (price * quantity)
+          }
+          document.getElementsByClassName("cart-total-price")[0].innerText = total + 'đ'
+        }
+    </script>
+</body>
+</html>
