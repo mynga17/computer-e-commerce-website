@@ -104,5 +104,4 @@ computer-ecommerce-website/
 │   ├── product-detail.png
 │   └── contact.png
 |
-│
 └── README.md
