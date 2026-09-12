@@ -8,18 +8,7 @@ The website focuses on presenting computer products such as laptops and computer
 
 ## 📌 Overview
 
-This project was developed as an early web development project during my university studies.
-
-The main objective was to practice:
-
-- Building web pages using HTML
-- Styling and designing interfaces using CSS
-- Organizing a multi-page website
-- Creating product pages
-- Linking pages together
-- Working with images and static web content
-
-The website simulates a small online computer store.
+This project was developed as an academic web development project during my university studies. It is a static multi-page computer e-commerce website built to practice HTML, CSS, page navigation, product presentation, and static web content management.
 
 ---
 
@@ -64,6 +53,7 @@ A separate contact page is included to provide basic store contact information.
 
 - HTML5
 - CSS3
+- JavaScript
 
 ### Development Tools
 
@@ -105,3 +95,4 @@ computer-ecommerce-website/
 │   └── contact.png
 |
 └── README.md
+```
